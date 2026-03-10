@@ -1,9 +1,10 @@
 from art import logo
 
-alphabet = [
-    'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
-    'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'
-]
+alphabet = list(
+    'abcdefghijklmnopqrstuvwxyz'
+    '0123456789'
+    '!@#$%^&*()-_=+[]{}|;:,.<>?/\\'
+)
 
 def caesar(text, shift, direction):
     result = ""
@@ -12,10 +13,10 @@ def caesar(text, shift, direction):
 
     for char in text:
         if char in alphabet:
-            new_index = (alphabet.index(char) + shift) % 26
+            new_index = (alphabet.index(char) + shift) % len(alphabet)
             result += alphabet[new_index]
         else:
-            result += char  # keep spaces, numbers, punctuation as-is
+            result += char  # keep spaces and any other chars as-is
 
     return result
 
